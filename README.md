@@ -36,3 +36,7 @@ nuestro sistema.
 
 | [<img src="https://https://avatars.githubusercontent.com/u/78327319?v=4" width=115><br><sub>Valentin Laplume</sub>](https://github.com/valentinlaplume) |
 | :---: |
+
+
+| [<img src="[https://avatars.githubusercontent.com/u/37356058?v=4](https://https://avatars.githubusercontent.com/u/78327319?v=4)" width=115><br><sub>Valentin Laplume</sub>]
+| :---: |
