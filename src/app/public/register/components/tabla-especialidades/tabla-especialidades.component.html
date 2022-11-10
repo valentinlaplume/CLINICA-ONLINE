@@ -1,0 +1,11 @@
+<div class="overflow-auto container-items">
+    <ul class="list-group mb-3 seleccionado">
+        <div *ngIf="spinner_especialidades" class="spinner-border spinner" role="status">
+        </div>
+        <li *ngFor="let item of especialidades" class="list-group-item d-flex justify-content-between lh-sm" (click)="seleccionarItem(item)">
+            <div>
+                <h5 class="my-0">{{item.descripcion}}</h5>
+            </div>
+        </li>
+    </ul>
+</div>

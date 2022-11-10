@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(242, 242, 242);
+    height: 50em;
+}
+@media only screen and (max-width: 769px) {
+    body{
+        height: 80em;
+    }
+}
+
+.container-table{
+    border: 5 solid black;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+    display:block;
+    border-radius:50%;
+    box-shadow: 2px 2px 5px #999;
+} 
+
+.scrollbar-especialidades {
+    position: relative;
+    height:9em;
+    
+    overflow: auto;
+}
+
+@media (max-width: 520) {
+    td{
+        font-size: 10px!important;
+    }
+} 
+
+.btn-success, .btn-danger {
+    border-radius: 5px;
+    height: 40px;
+    font-size: 17px;
+    box-shadow: 2px 2px 5px #999;
+}

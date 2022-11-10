@@ -1,0 +1,57 @@
+<body>
+  <form [formGroup]="formulario" (ngSubmit)="guardar()">
+    <div class="container">
+      <div class="row">
+        <h4 class="mb-10">Registro de Especialidad</h4>
+        <div class="col-sm-12">
+          <label for="country" class="form-label">Especialidad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="especialidad"
+            formControlName="especialidad"
+            placeholder="Ingrese Especialidad"
+            autocomplete="off"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              formulario.get('especialidad')?.hasError('required') &&
+              formulario.get('especialidad')?.touched
+            "
+          >
+            Debes ingresar el nombre de la especialidad.</span
+          >
+        </div>
+        <div class="col-sm-12 mt-3">
+          <label for="country" class="form-label">Imagen</label>
+          <input
+            type="file"
+            class="form-control"
+            id="urlFoto"
+            (change)="selectFile($event)"
+            formControlName="urlFoto"
+          />
+        </div>
+        <div
+          *ngIf="this.authService.msjError"
+          class="alert alert-danger"
+          role="alert"
+        >
+          - {{ this.authService.msjError }}
+        </div>
+
+        <hr class="my-4" />
+        <div style="text-align: center">
+          <button
+            class="w-50 btn btn-primary btn-lg"
+            type="submit"
+            [disabled]="formulario.invalid"
+          >
+            Enviar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>

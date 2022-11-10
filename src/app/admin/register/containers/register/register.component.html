@@ -1,0 +1,228 @@
+<body>
+  <section class="container section-register">
+    <div class="g-5 container-form">
+      <div class="col-md-3 col-lg-11 mx-auto">
+        <h3 style="margin-bottom: 20px">Registro de Administrador</h3>
+        <form
+          [formGroup]="formRegister"
+          (ngSubmit)="submit()"
+          class="needs-validation"
+        >
+          <div class="row g-4">
+            <div class="col-sm-6">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                formControlName="nombre"
+                autocomplete="off"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('nombre')?.hasError('required') &&
+                  formRegister.get('nombre')?.touched
+                "
+                class="text-danger"
+                >El nombre es requerido</small
+              >
+            </div>
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellido"
+                formControlName="apellido"
+                autocomplete="off"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('apellido')?.hasError('required') &&
+                  formRegister.get('apellido')?.touched
+                "
+                class="text-danger"
+                >El apellido es requerido</small
+              >
+            </div>
+            <div class="col-sm-12">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                autocomplete="off"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('email')?.hasError('required') &&
+                  formRegister.get('email')?.touched
+                "
+                class="text-danger"
+                >El correo electrónico es requerido</small
+              >
+            </div>
+            <div class="col-sm-6">
+              <label for="edad" class="form-label">Edad</label>
+              <input
+                type="number"
+                class="form-control"
+                id="edad"
+                formControlName="edad"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('edad')?.hasError('required') &&
+                  formRegister.get('edad')?.touched
+                "
+                class="text-danger"
+                >La edad es requerida</small
+              >
+              <small
+                *ngIf="
+                  formRegister.get('edad')?.hasError('min') &&
+                  formRegister.get('edad')?.touched
+                "
+                class="text-danger"
+                >La edad mínima es 18 años</small
+              >
+            </div>
+            <div class="col-sm-6">
+              <label for="dni" class="form-label">DNI</label>
+              <input
+                type="number"
+                class="form-control"
+                id="dni"
+                formControlName="dni"
+                autocomplete="off"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('dni')?.hasError('required') &&
+                  formRegister.get('dni')?.touched
+                "
+                class="text-danger"
+                >El dni es requerido</small
+              >
+              <small
+                *ngIf="
+                  formRegister.get('dni')?.hasError('min') &&
+                  formRegister.get('dni')?.touched
+                "
+                class="text-danger"
+                >El dni debe contener al menos 8 caracteres</small
+              >
+            </div>
+
+            <div class="col-sm-6">
+              <label for="password" class="form-label">Constraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                autocomplete="off"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('password')?.hasError('required') &&
+                  formRegister.get('password')?.touched
+                "
+                class="text-danger"
+                >La contraseña es requerida</small
+              >
+              <small
+                *ngIf="
+                  formRegister.get('password')?.hasError('minLength') &&
+                  formRegister.get('password')?.touched
+                "
+                class="text-danger"
+                >La contraseña debe contener al menos 6 caracteres</small
+              >
+            </div>
+            <div class="col-sm-6">
+              <label for="password_confirm" class="form-label"
+                >Confirma Constraseña</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="password_confirm"
+                formControlName="password_confirm"
+                autocomplete="off"
+              />
+              <small
+                *ngIf="
+                  formRegister.get('password_confirm')?.hasError('required') &&
+                  formRegister.get('password_confirm')?.touched
+                "
+                class="text-danger"
+                >La confirmación de contraseña es requerida</small
+              >
+              <small
+                *ngIf="
+                  formRegister.get('password_confirm')?.hasError('minLength') &&
+                  formRegister.get('password_confirm')?.touched
+                "
+                class="text-danger"
+                >La contraseña debe contener al menos 6 caracteres</small
+              >
+            </div>
+            <div class="col-sm-12">
+              <label for="country" class="form-label">Adjunte imagenes</label>
+              <input
+                type="file"
+                class="form-control"
+                id="urlFoto"
+                (change)="selectFile($event)"
+                formControlName="urlFoto"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  formRegister.get('urlFoto')?.hasError('required') &&
+                  formRegister.get('urlFoto')?.touched
+                "
+              >
+                La imagen es requerida
+              </span>
+            </div>
+
+            <div
+              *ngIf="this.authService.msjError"
+              class="alert alert-danger"
+              role="alert"
+            >
+              - {{ this.authService.msjError }}
+            </div>
+
+            <div class="mb-3">
+              <app-captcha-propio
+                (resultadoCaptcha)="getResultadoCaptcha($event)"
+              ></app-captcha-propio>
+            </div>
+            <hr class="my-4" />
+            <div style="text-align: center">
+              <button
+                class="w-100 btn btn-primary btn-lg"
+                type="submit"
+                [disabled]="formRegister.invalid || !resultadoCaptcha"
+                [hidden]="spinner"
+              >
+                Enviar
+              </button>
+            </div>
+            <div
+              [hidden]="!spinner"
+              class="spinner-border text-dark mx-auto"
+              role="status"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>

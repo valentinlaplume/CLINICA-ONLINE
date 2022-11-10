@@ -1,0 +1,61 @@
+body{
+    background-color: rgb(242, 242, 242);
+    height: 70em;
+}
+@media only screen and (max-width: 769px) {
+    body{
+        height: 120em;
+    }
+}
+
+.section-register{
+    padding: 20px 0px;
+}
+
+h3{
+    /* text-align: center; */
+}
+
+.container-form{
+    padding: 15px;
+}
+
+.container-especialidades{
+    /* height: 200px; */
+    /* resize: both; */
+    overflow: auto;
+}
+.container-especialidades-selected{
+    padding:10px; 
+    border: 1px solid rgb(220, 220, 220); 
+    background-color: white; 
+    border-radius: 5px;
+    max-height: 150px;
+    overflow: auto;
+}
+
+.spinner{
+    margin-left: 15px;
+}
+
+@media only screen and (max-width: 769px) {
+    .container-especialidades{
+        overflow: auto;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .div-top-especialidades{
+        display: none;
+    }
+    .div-bottom-especialidades{
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .div-bottom-especialidades{
+        display: none;
+    }
+}

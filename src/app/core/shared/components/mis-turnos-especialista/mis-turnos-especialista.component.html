@@ -1,0 +1,66 @@
+<body>
+  <div class="containter">
+    <h3 class="text-center">Mis Turnos</h3>
+    <div class="row p-3">
+      <h4>Búsqueda por Especialidad o Paciente</h4>
+      <div class="form-group col-md-6">
+        <input class="form-control" [(ngModel)]="filter" ng-blur="ngBlur()" />
+      </div>
+    </div>
+    <div class="mx-auto text-center mt-5" *ngIf="!turnosPaciente">
+      <div class="spinner-border text-dark mx-auto text-center" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div class="col-md-12 mx-auto table-responsive mt-3">
+      <table class="table table-striped table-bordered" *ngIf="turnosPaciente">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Fecha y Hora</th>
+            <th>Paciente</th>
+            <th>Especialista</th>
+            <th>Especialidad</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="tr-data"
+            *ngFor="
+              let turno of turnosPaciente | filterEspecialista: filter;
+              index as i
+            "
+            (click)="asignarTurno(turno)"
+          >
+            <th>{{ i + 1 }}</th>
+            <td>{{ turno.fecha }} - {{ turno.hora }}</td>
+            <td>{{ turno.paciente.nombre }} {{ turno.paciente.apellido }}</td>
+            <td>
+              {{ turno.especialista.nombre }} {{ turno.especialista.apellido }}
+            </td>
+            <td>{{ turno.especialidad.descripcion }}</td>
+            <td
+              [ngClass]="
+                turno.estado == 'ACEPTADO'
+                  ? 'text-primary'
+                  : turno.estado == 'PENDIENTE'
+                  ? 'text-warning'
+                  : turno.estado == 'FINALIZADO'
+                  ? 'text-success'
+                  : 'text-danger'
+              "
+            >
+              <b>{{ turno.estado }}</b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-turno-detalle
+      *ngIf="turnoSeleccionado"
+      [turnoDetalle]="turnoSeleccionado"
+    ></app-turno-detalle>
+  </div>
+</body>

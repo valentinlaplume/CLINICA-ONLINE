@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(242, 242, 242);
+    height: 80em;
+}
+@media only screen and (max-width: 769px) {
+    body{
+        height: 120em;
+    }
+}
+
+.section-register{
+    padding: 20px 0px;
+    /* width: 1000px;
+    margin-left: auto;
+    margin-right: auto;  */
+}
+
+h3{
+    /* text-align: center; */
+}
+
+.container-form{
+    padding: 15px;
+    align-items: center;
+
+}
+
+
+
+.spinner{
+    margin-left: 15px;
+}
+

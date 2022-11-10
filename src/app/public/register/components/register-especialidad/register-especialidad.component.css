@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(242, 242, 242);
+    height: 35em;
+}
+@media only screen and (max-width: 769px) {
+    body{
+        height: 60em;
+    }
+}
+
+.container{
+    padding: 20px;
+}

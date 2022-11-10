@@ -1,0 +1,17 @@
+.container-turno-detalle{
+    box-shadow: 1px 1px 5px gray;
+    padding: 20px;
+}
+
+img{
+    width: 120px;
+    height: 130px;
+    box-shadow: 0px 0px 5px #999;
+    padding: 10px;
+    margin:0px 10px;
+}
+
+.container-encuesta{
+    box-shadow: 1px 1px 3px gray;
+    padding: 5px;
+}

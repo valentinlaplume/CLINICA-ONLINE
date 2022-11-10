@@ -1,0 +1,47 @@
+body{
+    background-color: rgb(242, 242, 242);
+    height: 50em;
+}
+@media only screen and (max-width: 769px) {
+    body{
+        height: 50em;
+    }
+}
+
+.section-register{
+    padding: 20px 0px;
+}
+
+h3{
+    text-align: center;
+    align-items: center;
+}
+
+.container-img{
+    padding: 15px;
+}
+
+.img-modelos{
+    width: 70%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.img-modelos:hover{
+    cursor: pointer;
+    background-color: rgb(193, 223, 243);
+}
+
+
+td{
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+   td{
+        margin-bottom: 20px;
+        display: block;
+   }
+}

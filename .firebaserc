@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "labo4-27bce": {
+      "hosting": {
+        "clinica": [
+          "clinica-laplume"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "labo4-27bce"
+  }
+}

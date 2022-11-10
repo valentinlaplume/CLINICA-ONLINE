@@ -1,0 +1,64 @@
+<!-- <div class="container">
+  <div class="form-check form-switch mx-auto">
+    <input
+      class="form-check-input mb-2"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+      appCaptcha
+      (deshabilitar)="onDeshabilitarEvent($event)"
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault"
+      >Deshablitar</label
+    >
+  </div>
+</div> -->
+<div class="container" *ngIf="!deshabilitado">
+  <div class="wrapper" *ngIf="captchaResult === false">
+    <div class="captcha-area">
+      <div class="captcha-img">
+        <img
+          src="../../../../../assets/captcha-Backg.jpg"
+          alt="Captch Background"
+        />
+        <span class="captcha" appCaptcha (obtenerCapctha)="getCaptcha()">{{
+          captcha
+        }}</span>
+      </div>
+      <button class="reload-btn" (click)="getCaptcha()" type="button">
+        <i class="fas fa-redo-alt"></i>
+      </button>
+      <!-- <button class="reload-btn" appCaptcha (obtenerCapctha)="getCaptcha()" type="button"><i class="fas fa-redo-alt"></i></button> -->
+    </div>
+    <form action="#" class="input-area mx-auto">
+      <div class="col-sm-12">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="respete letras"
+          name="textoCaptcha"
+          maxlength="6"
+          spellcheck="false"
+          [(ngModel)]="captchaParaVerificar"
+          required
+        />
+      </div>
+    </form>
+    <button type="button" class="btnVerificar" (click)="verificarCaptcha()">
+      Verificar
+    </button>
+    <div class="status-text"></div>
+  </div>
+
+  <div class="wrapper" *ngIf="captchaResult === true">
+    <div class="captcha-area">
+      <div class="checkContenedor">
+        <img
+          src="../../../../../assets/captchaOk.jpg"
+          alt="Captch Background"
+          class="checkImage"
+        />
+      </div>
+    </div>
+  </div>
+</div>

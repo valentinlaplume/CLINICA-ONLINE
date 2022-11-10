@@ -1,0 +1,31 @@
+<body>
+  <section class="container section-register">
+    <h3>Registrarme como:</h3>
+    <div class="container-img">
+      <table>
+        <tbody routerLinkActive="active">
+          <tr>
+            <td>
+              <h4>Paciente</h4>
+              <img
+                class="img-modelos"
+                [routerLink]="['paciente']"
+                src="../../../../../assets/paciente.png"
+                alt="Paciente"
+              />
+            </td>
+            <td>
+              <h4>Especialista</h4>
+              <img
+                class="img-modelos"
+                [routerLink]="['especialista']"
+                src="../../../../../assets/especialista-doctor.png"
+                alt="Especialista"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</body>

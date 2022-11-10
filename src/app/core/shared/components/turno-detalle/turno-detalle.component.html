@@ -1,0 +1,235 @@
+<div class="container">
+  <div class="row container-turno-detalle">
+    <div class="col-12">
+      <h3 class="text-center mb-3">Detalle del Turno</h3>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <h4>
+            Paciente: {{ turnoDetalle.paciente.apellido }},
+            {{ turnoDetalle.paciente.nombre }}
+          </h4>
+          <div style="margin: 10px 0px">
+            <div>
+              <img [src]="turnoDetalle.paciente.urlFotos[0]" appNotImage />
+              <img [src]="turnoDetalle.paciente.urlFotos[1]" appNotImage />
+            </div>
+          </div>
+          <h4>Fecha: {{ turnoDetalle.fecha }}</h4>
+          <h4>Hora: {{ turnoDetalle.hora }}</h4>
+          <h4>
+            Especialista: {{ turnoDetalle.especialista.apellido }},
+            {{ turnoDetalle.especialista.nombre }}
+          </h4>
+          <h4>Especialidad: {{ turnoDetalle.especialidad.descripcion }}</h4>
+          <h4>
+            Estado:
+            <b
+              [ngClass]="
+                turnoDetalle.estado == 'ACEPTADO'
+                  ? 'text-primary'
+                  : turnoDetalle.estado == 'PENDIENTE'
+                  ? 'text-warning'
+                  : turnoDetalle.estado == 'FINALIZADO'
+                  ? 'text-success'
+                  : 'text-danger'
+              "
+            >
+              {{ turnoDetalle.estado }}
+            </b>
+          </h4>
+          <h4 *ngIf="turnoDetalle.comentariosEspecialista">
+            Comentario Especialista: {{ turnoDetalle.comentariosEspecialista }}
+          </h4>
+          <h4 *ngIf="turnoDetalle.comentariosPaciente">
+            Comentario Paciente: {{ turnoDetalle.comentariosPaciente }}
+          </h4>
+
+          <div *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista">
+            <div *ngIf="turnoDetalle.estado == 'REALIZADO'" class="form-group">
+              <h4
+                *ngIf="
+                  turnoDetalle.estado == 'REALIZADO' ||
+                  turnoDetalle.estado == 'CANCELADO'
+                "
+              >
+                Comentarios Especialista:
+                {{ turnoDetalle.comentariosEspecialista }}
+              </h4>
+              <textarea
+                *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista"
+                class="form-control"
+                [(ngModel)]="nuevoComentarioEspecialista"
+                placeholder="Deje un comentario para finalizar acción..."
+              ></textarea>
+              <button class="btn btn-success mt-2" (click)="enviarComentario()">
+                Enviar
+              </button>
+            </div>
+          </div>
+          <div *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente">
+            <div *ngIf="turnoDetalle.estado == 'REALIZADO'" class="form-group">
+              <h4>
+                Comentarios Paciente: {{ turnoDetalle.comentariosPaciente }}
+              </h4>
+              <textarea
+                *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente"
+                class="form-control"
+                [(ngModel)]="nuevoComentarioPaciente"
+              ></textarea
+              ><button
+                class="btn btn-success mt-2"
+                (click)="enviarComentario()"
+              >
+                Enviar
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="turnoDetalle.estado == 'PENDIENTE'">
+            <div
+              *ngIf="
+                turnoDetalle.estado != 'ACEPTADO' &&
+                turnoDetalle.estado != 'RECHAZADO' &&
+                turnoDetalle.estado != 'REALIZADO' &&
+                turnoDetalle.estado != 'CANCELADO'
+              "
+              class="form-group col-md-2"
+            >
+              <button class="btn btn-warning mb-2" (click)="cancelar()">
+                CANCELAR
+              </button>
+            </div>
+            <div
+              *ngIf="
+                turnoDetalle.estado != 'ACEPTADO' &&
+                turnoDetalle.estado != 'CANCELADO' &&
+                turnoDetalle.estado != 'REALIZADO' &&
+                turnoDetalle.estado != 'RECHAZADO'
+              "
+              class="form-group col-md-2"
+            >
+              <button
+                class="btn btn-danger mb-2"
+                (click)="rechazar()"
+                *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista"
+              >
+                RECHAZAR
+              </button>
+            </div>
+            <div
+              *ngIf="
+                turnoDetalle.estado != 'RECHAZADO' &&
+                turnoDetalle.estado != 'REALIZADO' &&
+                turnoDetalle.estado != 'CANCELADO' &&
+                turnoDetalle.estado != 'ACEPTADO'
+              "
+            >
+              <button
+                class="btn btn-primary mb-2"
+                (click)="aceptar()"
+                *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista"
+              >
+                ACEPTAR
+              </button>
+            </div>
+          </div>
+          <div
+            *ngIf="
+              turnoDetalle.estado == 'ACEPTADO' &&
+              turnoDetalle.estado != 'FINALIZADO'
+            "
+          >
+            <button
+              class="btn btn-success mb-2"
+              (click)="finalizar()"
+              *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista"
+            >
+              FINALIZAR
+            </button>
+          </div>
+        </div>
+        <div *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista">
+          <h4 *ngIf="turnoDetalle.comentariosEspecialista != ''">
+            Comentarios Especialista: {{ turnoDetalle.comentariosEspecialista }}
+          </h4>
+
+          <div *ngIf="cancela || rechaza || finaliza" class="form-group">
+            <div *ngIf="!noMostrarEnviarComentarioEsp">
+              <textarea
+                *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista"
+                class="form-control"
+                [(ngModel)]="nuevoComentarioEspecialista"
+                placeholder="Deje un comentario para finalizar acción..."
+              ></textarea>
+              <button class="btn btn-success mt-2" (click)="enviarComentario()">
+                Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente">
+          <h4 *ngIf="turnoDetalle.comentariosPaciente != ''">
+            Comentarios Paciente: {{ turnoDetalle.comentariosPaciente }}
+          </h4>
+          <div *ngIf="cancela" class="form-group">
+            <div *ngIf="!noMostrarEnviarComentarioPac">
+              <textarea
+                *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente"
+                class="form-control"
+                [(ngModel)]="nuevoComentarioPaciente"
+                placeholder="Deje un comentario para finalizar acción..."
+              ></textarea>
+              <button class="btn btn-success mt-2" (click)="enviarComentario()">
+                Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="this.authSvc.ITEM_ACCESOS.isAdmin">
+          <h4 *ngIf="turnoDetalle.comentariosAdmin != ''">
+            Comentarios Administrador: {{ turnoDetalle.comentariosAdmin }}
+          </h4>
+          <div *ngIf="cancela" class="form-group">
+            <div *ngIf="!noMostrarEnviarComentarioAdmin">
+              <textarea
+                *ngIf="this.authSvc.ITEM_ACCESOS.isAdmin"
+                class="form-control"
+                [(ngModel)]="nuevoComentarioAdmin"
+                placeholder="Deje un comentario para finalizar acción..."
+              ></textarea>
+              <button class="btn btn-success mt-2" (click)="enviarComentario()">
+                Enviar
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- <div
+          class="container-encuesta"
+          *ngIf="this.turnoDetalle && this.authSvc.ITEM_ACCESOS.isAdmin"
+        >
+          <app-turno-detalle [turnoDetalle]="turnoDetalle"></app-turno-detalle>
+        </div> -->
+        <div
+          class="container-encuesta"
+          *ngIf="
+            this.authSvc.ITEM_ACCESOS.isAdmin &&
+            this.turnoDetalle.encuesta != '' &&
+            this.turnoDetalle.encuesta != undefined
+          "
+        >
+          <h3 class="text-center mt-3">Encuesta Realizada</h3>
+          <h5>
+            ¿Qué te parecio la atención? {{ turnoDetalle.encuesta.pregUno }}
+          </h5>
+          <h5>
+            ¿Qué mejoras nos recomendas? {{ turnoDetalle.encuesta.pregDos }}
+          </h5>
+          <h5>
+            ¿Volverías a visitar nuestra Clínica?
+            {{ turnoDetalle.encuesta.pregTres }}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

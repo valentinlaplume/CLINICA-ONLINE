@@ -1,0 +1,29 @@
+<body>
+  <div class="container-msj" *ngIf="usuario$ | async as usuario">
+    <h2>¡Gracias por registrarte!</h2>
+    <p>
+      Hemos enviado un correo electrónico de confirmación a
+      <strong>{{ this.usuario?.email }}</strong>
+    </p>
+    <p>
+      Por favor revise su correo electrónico y haga clic en el enlace para
+      verificar su dirección de correo electrónico.
+    </p>
+    <button
+      class="btn-dark"
+      type="submit"
+      color="primary"
+      expand="block"
+      (click)="onSendEmail()"
+    >
+      Reenviar correo de verificación
+    </button>
+    <div
+      *ngIf="this.authSvc.msjError"
+      class="alert alert-danger mt-3"
+      role="alert"
+    >
+      {{ this.authSvc.msjError }}
+    </div>
+  </div>
+</body>

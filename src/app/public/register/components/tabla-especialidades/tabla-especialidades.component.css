@@ -1,0 +1,15 @@
+.container-items{
+    height: 400px;
+    overflow: auto;
+}
+
+.seleccionado:hover{
+    cursor: pointer;
+}
+
+.spinner{
+    margin-left: 50%;
+    margin-top: 10%;
+    font-weight: 900;
+}
+

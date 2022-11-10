@@ -1,0 +1,81 @@
+<body>
+  <div class="mx-auto" *ngIf="this.authService.usuarioLogeado">
+    <div class="mx-auto container-info table-responsive">
+      <h3>Mi Perfil</h3>
+      <table class="table-responsive mx-auto">
+        <thead>
+          <tr>
+            <th *ngIf="!this.authService.ITEM_ACCESOS.isPaciente"></th>
+            <th *ngIf="this.authService.ITEM_ACCESOS.isPaciente"></th>
+            <th *ngIf="this.authService.ITEM_ACCESOS.isPaciente"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td *ngIf="!this.authService.ITEM_ACCESOS.isPaciente">
+              <img
+                [src]="this.authService.usuarioLogeado.urlFoto"
+                alt="img-{{ this.authService.usuarioLogeado.dni }}"
+              />
+            </td>
+            <td *ngIf="this.authService.ITEM_ACCESOS.isPaciente">
+              <img
+                [src]="this.authService.usuarioLogeado.urlFotos[0]"
+                alt="img-{{ this.authService.usuarioLogeado.dni }}"
+              />
+            </td>
+            <td *ngIf="this.authService.ITEM_ACCESOS.isPaciente">
+              <img
+                [src]="this.authService.usuarioLogeado.urlFotos[1]"
+                alt="img-{{ this.authService.usuarioLogeado.dni }}"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h5>Tipo de Usuario: {{ this.authService.usuarioLogeado.roles[0] }}</h5>
+      <h5>Nombre: {{ this.authService.usuarioLogeado.nombre }}</h5>
+      <h5>Apellido: {{ this.authService.usuarioLogeado.apellido }}</h5>
+      <h5>DNI: {{ this.authService.usuarioLogeado.dni }}</h5>
+      <h5>Correo electrónico: {{ this.authService.usuarioLogeado.email }}</h5>
+      <h5>Fecha de Alta: {{ this.authService.usuarioLogeado.fechaAlta }}</h5>
+      <h5 *ngIf="this.authService.ITEM_ACCESOS.isPaciente">
+        Obra Social: {{ this.authService.usuarioLogeado.obraSocial }}
+      </h5>
+      <h5 *ngIf="this.authService.ITEM_ACCESOS.isEspecialista">
+        Especialidades:
+      </h5>
+      <div
+        style="margin: 10px"
+        *ngFor="
+          let especialidad of this.authService.usuarioLogeado.especialidades
+        "
+      >
+        <li>{{ especialidad.descripcion }}</li>
+      </div>
+      <h5
+        *ngIf="this.authService.ITEM_ACCESOS.isEspecialista"
+        [ngClass]="
+          this.authService.usuarioLogeado.cuentaHabilitada == true
+            ? 'text-success'
+            : 'text-danger'
+        "
+      >
+        {{
+          this.authService.usuarioLogeado.cuentaHabilitada == true
+            ? "CUENTA HABILITADA"
+            : "CUENTA INHABILITADA"
+        }}
+      </h5>
+    </div>
+    <br />
+    <app-mis-horarios
+      *ngIf="
+        authService.ITEM_ACCESOS.isEspecialista &&
+        authService.usuarioLogeado.cuentaHabilitada
+      "
+      [especialistaHorarios]="this.authService.usuarioLogeado"
+    ></app-mis-horarios>
+  </div>
+</body>

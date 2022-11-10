@@ -1,0 +1,243 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <img
+      src="../../../../../assets/icono.png"
+      alt="logo"
+      width="35"
+      height="35"
+      style="margin-right: 10px"
+      class="img-logo"
+    />
+    <a class="navbar-brand" (click)="goInicio()">CLÍNICA LAPLUME</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <img
+        src="../../../../../assets/toggler.png"
+        alt="logo"
+        width="50"
+        height="50"
+      />
+      <!-- <span class="navbar-toggler-icon">=</span> -->
+    </button>
+    <!-- <img src="../../../assets/logo-nav.png" style="width:5%; height:5%" >  -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" (click)="goInicio()"
+            >INICIO</a
+          >
+        </li>
+
+        <!-- <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" aria-current="page" [routerLink]="['registro']">REGISTRARSE</a>
+        </li>-->
+
+        <!-- SOLO ADMINISTRADORES -->
+        <div
+          *ngIf="
+            authService.ITEM_ACCESOS.isAdmin && usuario$ | async as usuario
+          "
+        >
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              USUARIOS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <!-- [routerLink]="['/administracion/registro/admin']" -->
+                <a class="dropdown-item" (click)="goRegistrarAdmin()"
+                  >REGISTRAR ADMINISTRADOR</a
+                >
+              </li>
+              <!-- <li>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/administracion/lista-pacientes']"
+                  >LISTA DE PACIENTES</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  [routerLink]="['/administracion/lista-especialistas']"
+                  >LISTA DE ESPECIALISTAS</a
+                >
+              </li> -->
+              <li>
+                <!-- [routerLink]="['/administracion/habilitar-cuentas']" -->
+                <a class="dropdown-item" (click)="goHabilitarEspecialistas()"
+                  >HABILITAR CUENTA DE ESPECIALISTA</a
+                >
+              </li>
+            </ul>
+          </li>
+        </div>
+
+        <div
+          *ngIf="
+            authService.ITEM_ACCESOS.isEspecialista &&
+              authService.ITEM_ACCESOS.cuentaHabilitada &&
+              usuario$ | async as usuario
+          "
+        >
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              TURNOS (ESPECIALISTA)
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" (click)="goMisTurnosEspecialista()"
+                  >MIS TURNOS</a
+                >
+              </li>
+            </ul>
+          </li>
+        </div>
+
+        <div
+          *ngIf="
+            authService.ITEM_ACCESOS.isPaciente && usuario$ | async as usuario
+          "
+        >
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              TURNOS (PACIENTE)
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" (click)="goSolicitarTurnos()"
+                  >SOLICITAR</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="goMisTurnosPaciente()"
+                  >MIS TURNOS</a
+                >
+              </li>
+            </ul>
+          </li>
+        </div>
+
+        <div
+          *ngIf="
+            authService.ITEM_ACCESOS.isAdmin && usuario$ | async as usuario
+          "
+        >
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              TURNOS
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" (click)="goSolicitarTurnos()"
+                  >SOLICITAR</a
+                >
+              </li>
+              <li *ngIf="authService.ITEM_ACCESOS.isAdmin">
+                <a class="dropdown-item" (click)="goVerTurnos()">VER TODOS</a>
+              </li>
+            </ul>
+          </li>
+        </div>
+
+        <div *ngIf="usuario$ | async as usuario; else acceso">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle a-email"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ usuario.email }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <!-- <li
+                *ngIf="
+                  authService.ITEM_ACCESOS.isEspecialista &&
+                    authService.ITEM_ACCESOS.cuentaHabilitada &&
+                    usuario$ | async as usuario
+                "
+                (click)="onMisHorarios()"
+              >
+                <a class="dropdown-item" aria-current="page">MIS HORARIOS</a>
+              </li> -->
+              <li (click)="onMiPerfil()">
+                <a class="dropdown-item" aria-current="page">MI PERFIL</a>
+              </li>
+              <li (click)="onLogout()">
+                <a class="dropdown-item" aria-current="page">SALIR</a>
+              </li>
+            </ul>
+          </li>
+        </div>
+
+        <!-- ----------------------------------- TEMPLATE ----------------------------------- -->
+        <ng-template #acceso>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              ACCEDER
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <!-- <a class="dropdown-item" [routerLink]="['/registro']" -->
+                <a class="dropdown-item" (click)="goRegistrarme()"
+                  >REGISTRARME</a
+                >
+              </li>
+              <li>
+                <!-- <a class="dropdown-item" [routerLink]="['/iniciar-sesion']" -->
+                <a class="dropdown-item" (click)="goIniciarSesion()"
+                  >INICIAR SESIÓN</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

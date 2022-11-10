@@ -1,0 +1,63 @@
+<body>
+  <h3 class="text-center p-3">Habilitar cuenta a Especialista</h3>
+  <div class="container-table table-responsive">
+    <table class="table table-bordered table-striped mx-auto">
+      <thead class="">
+        <tr class="table-dark">
+          <th scope="col">Foto</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Dni</th>
+          <th scope="col">Email</th>
+          <th scope="col">Fecha de alta</th>
+          <th scope="col">Especialidades</th>
+          <th scope="col">Cuenta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-light" *ngFor="let item of lista">
+          <td>
+            <img [src]="item.urlFoto" alt="img-especialista-{{ item.dni }}" />
+          </td>
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.apellido }}</td>
+          <td>{{ item.edad }}</td>
+          <td>{{ item.dni }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.fechaAlta }}</td>
+          <div class="scrollbar-especialidades">
+            <td>
+              <table class="table table-bordered table-striped mb-0">
+                <tbody>
+                  <tr
+                    class="table-light"
+                    *ngFor="let especialidad of item.especialidades"
+                  >
+                    <td scope="col">{{ especialidad.descripcion }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </div>
+          <td>
+            <button
+              class="btn-success"
+              *ngIf="!item.cuentaHabilitada"
+              (click)="habilitarCuenta(item)"
+            >
+              Habilitar
+            </button>
+            <button
+              class="btn-danger"
+              *ngIf="item.cuentaHabilitada"
+              (click)="deshabilitarCuenta(item)"
+            >
+              Deshabilitar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
