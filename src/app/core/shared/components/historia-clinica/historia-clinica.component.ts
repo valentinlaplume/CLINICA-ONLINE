@@ -5,7 +5,10 @@ import { Turno } from 'src/app/models/turno';
 import { AuthService } from 'src/app/services/auth.service';
 import { HistoriaClinicaService } from 'src/app/services/historia-clinica.service';
 import { TurnoService } from 'src/app/services/turno.service';
+// import { jsPDF } from '../../../../../../node_modules/jspdf/dist/jspdf.min.js';
+import html2canvas from 'html2canvas';
 
+let jsPDF = require('../../../../../../node_modules/jspdf/dist/jspdf.min.js');
 @Component({
   selector: 'app-historia-clinica',
   templateUrl: './historia-clinica.component.html',
@@ -87,16 +90,16 @@ export class HistoriaClinicaComponent implements OnInit {
   }
 
   crearPdf() {
-    // let DATA = <HTMLElement>document.getElementById('pdfTable');
-    // html2canvas(DATA).then((canvas) => {
-    //   let fileWidth = 208;
-    //   let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    //   const FILEURI = canvas.toDataURL('image/png');
-    //   let PDF = new jsPDF('p', 'mm', 'a4');
-    //   let position = 0;
-    //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    //   var nombreArchivo = 'historia-clinica.pdf';
-    //   PDF.save(nombreArchivo);
-    // });
+    let DATA = <HTMLElement>document.getElementById('pdfTable');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      var nombreArchivo = 'historia-clinica.pdf';
+      PDF.save(nombreArchivo);
+    });
   }
 }

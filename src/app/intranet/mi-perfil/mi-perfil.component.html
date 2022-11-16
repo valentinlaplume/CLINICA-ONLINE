@@ -1,7 +1,7 @@
 <body>
   <div class="mx-auto" *ngIf="this.authService.usuarioLogeado">
     <div class="mx-auto container-info table-responsive">
-      <h3>Mi Perfil</h3>
+      <h2>Mi Perfil</h2>
       <table class="table-responsive mx-auto">
         <thead>
           <tr>
@@ -34,17 +34,23 @@
         </tbody>
       </table>
 
-      <h5>Tipo de Usuario: {{ this.authService.usuarioLogeado.roles[0] }}</h5>
-      <h5>Nombre: {{ this.authService.usuarioLogeado.nombre }}</h5>
-      <h5>Apellido: {{ this.authService.usuarioLogeado.apellido }}</h5>
-      <h5>DNI: {{ this.authService.usuarioLogeado.dni }}</h5>
-      <h5>Correo electrónico: {{ this.authService.usuarioLogeado.email }}</h5>
-      <h5>Fecha de Alta: {{ this.authService.usuarioLogeado.fechaAlta }}</h5>
+      <h5>
+        <b>Tipo de Usuario:</b> {{ this.authService.usuarioLogeado.roles[0] }}
+      </h5>
+      <h5><b>Nombre:</b> {{ this.authService.usuarioLogeado.nombre }}</h5>
+      <h5><b>Apellido:</b> {{ this.authService.usuarioLogeado.apellido }}</h5>
+      <h5><b>DNI:</b> {{ this.authService.usuarioLogeado.dni }}</h5>
+      <h5>
+        <b>Correo electrónico:</b> {{ this.authService.usuarioLogeado.email }}
+      </h5>
+      <h5>
+        <b>Fecha de Alta:</b> {{ this.authService.usuarioLogeado.fechaAlta }}
+      </h5>
       <h5 *ngIf="this.authService.ITEM_ACCESOS.isPaciente">
-        Obra Social: {{ this.authService.usuarioLogeado.obraSocial }}
+        <b>Obra Social:</b> {{ this.authService.usuarioLogeado.obraSocial }}
       </h5>
       <h5 *ngIf="this.authService.ITEM_ACCESOS.isEspecialista">
-        Especialidades:
+        <b>Especialidades:</b>
       </h5>
       <div
         style="margin: 10px"
