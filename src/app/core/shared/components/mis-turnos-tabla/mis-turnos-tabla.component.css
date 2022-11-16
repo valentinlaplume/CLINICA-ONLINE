@@ -1,10 +1,10 @@
 body{
     background-color: rgb(242, 242, 242);
-    height: 100em;
+    height: 120em;
 }
 @media only screen and (max-width: 769px) {
     body{
-        height: 100em;
+        height: 140em;
     }
 }
 
@@ -28,4 +28,11 @@ img{
     box-shadow: 0px 0px 5px #999;
     padding: 10px;
     margin:0px 10px;
+}
+
+.table-responsive
+{
+    position: relative;
+height: 250px!important;
+overflow: auto;
 }

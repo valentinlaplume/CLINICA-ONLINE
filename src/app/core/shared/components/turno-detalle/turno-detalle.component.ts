@@ -91,23 +91,29 @@ export class TurnoDetalleComponent implements OnInit {
       this.turnoSvc.updateTurnoEstadoComentariosEspecialista(this.turnoDetalle);
       this.noMostrarEnviarComentarioEsp = true;
       this.nuevoComentarioEspecialista = '';
-      this.router.navigate(['/intranet/mis-turnos-especialista']);
-    }
-    if (this.authSvc.ITEM_ACCESOS.isPaciente) {
+      // this.router.navigate(['/intranet/mis-turnos-especialista']);
+    } else if (this.authSvc.ITEM_ACCESOS.isPaciente) {
       this.turnoDetalle.comentariosPaciente = this.nuevoComentarioPaciente;
       this.turnoSvc.updateTurnoEstadoComentariosPaciente(this.turnoDetalle);
       this.noMostrarEnviarComentarioPac = true;
       this.nuevoComentarioPaciente = '';
-      this.router.navigate(['/intranet/mis-turnos-paciente']);
-    }
-    if (this.authSvc.ITEM_ACCESOS.isAdmin) {
+      // this.router.navigate(['/intranet/mis-turnos-paciente']);
+    } else if (this.authSvc.ITEM_ACCESOS.isAdmin) {
       this.turnoDetalle.comentariosAdmin = this.nuevoComentarioAdmin;
       this.turnoSvc.updateTurnoEstadoComentariosAdmin(this.turnoDetalle);
       this.noMostrarEnviarComentarioAdmin = true;
       this.nuevoComentarioAdmin = '';
-      this.router.navigate(['/administracion/turnos']);
+      // this.router.navigate(['/administracion/turnos']);
     }
     this.estadoAccion = '';
+
+    if (this.authSvc.ITEM_ACCESOS.isEspecialista) {
+      this.router.navigate(['/intranet/mis-turnos-especialista']);
+    } else if (this.authSvc.ITEM_ACCESOS.isPaciente) {
+      this.router.navigate(['/intranet/mis-turnos-paciente']);
+    } else if (this.authSvc.ITEM_ACCESOS.isAdmin) {
+      this.router.navigate(['/administracion/turnos']);
+    }
 
     //this.turnoDetalle = null;
   }

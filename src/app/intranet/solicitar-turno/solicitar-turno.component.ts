@@ -195,19 +195,27 @@ export class SolicitarTurnoComponent implements OnInit, OnDestroy {
       this.fechaElegida.fmt_date.weekDay
     );
 
+    // let fechaElegidaStr =
+    //   this.fechaElegida.row_date.day +
+    //   '/' +
+    //   this.fechaElegida.row_date.month +
+    //   '/' +
+    //   this.fechaElegida.row_date.year;
+
     let fechaElegidaStr =
-      this.fechaElegida.row_date.day +
-      '/' +
+      this.fechaElegida.row_date.year +
+      '-' +
       this.fechaElegida.row_date.month +
-      '/' +
-      this.fechaElegida.row_date.year;
+      '-' +
+      this.fechaElegida.row_date.day;
+
     this.filtrarHorariosTurnos(fechaElegidaStr);
   }
 
   filtrarHorariosTurnos(fecha: string) {
-    if (this.turnosOcupados.length == 0) {
-      this.turnosDisponibles = [];
-    }
+    // if (this.turnosOcupados.length == 0) {
+    //   this.turnosDisponibles = [];
+    // }
     var fechaDis = fecha;
     this.turnosOcupados.forEach((turno: any) => {
       console.log(turno.especialista);
@@ -224,6 +232,12 @@ export class SolicitarTurnoComponent implements OnInit, OnDestroy {
           //   element.row_date.month +
           //   '/' +
           //   element.row_date.year;
+          fechaDis =
+            element.row_date.year +
+            '-' +
+            element.row_date.month +
+            '-' +
+            element.row_date.day;
 
           if (turno.fecha == fechaDis) {
             //alert(turno.fecha);
@@ -522,12 +536,20 @@ export class SolicitarTurnoComponent implements OnInit, OnDestroy {
       ) {
         for (let index = 0; index < this.fechas.length; index++) {
           const element = this.fechas[index];
+          // fechaDis =
+          //   element.row_date.day +
+          //   '/' +
+          //   element.row_date.month +
+          //   '/' +
+          //   element.row_date.year;
+
+          //2021-09-09
           fechaDis =
-            element.row_date.day +
-            '/' +
+            element.row_date.year +
+            '-' +
             element.row_date.month +
-            '/' +
-            element.row_date.year;
+            '-' +
+            element.row_date.day;
 
           if (turno.fecha == fechaDis) {
             // console.log("fechaDis " + fechaDis);
@@ -564,6 +586,7 @@ export class SolicitarTurnoComponent implements OnInit, OnDestroy {
     if (this.turnosDisponibles.length == 0) {
       console.log('no hay turnos disponibles');
       this.turnosDisponibles = this.fechas;
+      console.log(this.turnosDisponibles);
     }
   }
 
@@ -590,12 +613,21 @@ export class SolicitarTurnoComponent implements OnInit, OnDestroy {
         this.paciente = this.authSvc.usuarioLogeado;
         this.turno.paciente = this.paciente;
       }
+      // this.turno.fecha =
+      //   this.fechaElegida.row_date.day +
+      //   '/' +
+      //   this.fechaElegida.row_date.month +
+      //   '/' +
+      //   this.fechaElegida.row_date.year;
+
+      //2021-09-09
       this.turno.fecha =
-        this.fechaElegida.row_date.day +
-        '/' +
+        this.fechaElegida.row_date.year +
+        '-' +
         this.fechaElegida.row_date.month +
-        '/' +
-        this.fechaElegida.row_date.year;
+        '-' +
+        this.fechaElegida.row_date.day;
+
       this.turno.hora = this.horaElegida;
 
       this.turno.comentariosPaciente = '';

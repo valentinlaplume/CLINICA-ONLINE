@@ -46,7 +46,7 @@
 
           <div *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista">
             <div *ngIf="turnoDetalle.estado == 'REALIZADO'" class="form-group">
-              <h4
+              <!-- <h4
                 *ngIf="
                   turnoDetalle.estado == 'REALIZADO' ||
                   turnoDetalle.estado == 'CANCELADO'
@@ -54,7 +54,7 @@
               >
                 Comentarios Especialista:
                 {{ turnoDetalle.comentariosEspecialista }}
-              </h4>
+              </h4> -->
               <textarea
                 *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista"
                 class="form-control"
@@ -149,9 +149,9 @@
           </div>
         </div>
         <div *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista">
-          <h4 *ngIf="turnoDetalle.comentariosEspecialista != ''">
+          <!-- <h4 *ngIf="turnoDetalle.comentariosEspecialista != ''">
             Comentarios Especialista: {{ turnoDetalle.comentariosEspecialista }}
-          </h4>
+          </h4> -->
 
           <div *ngIf="cancela || rechaza || finaliza" class="form-group">
             <div *ngIf="!noMostrarEnviarComentarioEsp">
@@ -168,9 +168,9 @@
           </div>
         </div>
         <div *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente">
-          <h4 *ngIf="turnoDetalle.comentariosPaciente != ''">
+          <!-- <h4 *ngIf="turnoDetalle.comentariosPaciente != ''">
             Comentarios Paciente: {{ turnoDetalle.comentariosPaciente }}
-          </h4>
+          </h4> -->
           <div *ngIf="cancela" class="form-group">
             <div *ngIf="!noMostrarEnviarComentarioPac">
               <textarea
@@ -210,7 +210,7 @@
           <app-turno-detalle [turnoDetalle]="turnoDetalle"></app-turno-detalle>
         </div> -->
         <div
-          class="container-encuesta"
+          class="container-encuesta mt-3"
           *ngIf="
             this.authSvc.ITEM_ACCESOS.isAdmin &&
             this.turnoDetalle.encuesta != '' &&
@@ -219,13 +219,15 @@
         >
           <h3 class="text-center mt-3">Encuesta Realizada</h3>
           <h5>
-            ¿Qué te parecio la atención? {{ turnoDetalle.encuesta.pregUno }}
+            <b>¿Qué te parecio la atención?</b>
+            {{ turnoDetalle.encuesta.pregUno }}
           </h5>
           <h5>
-            ¿Qué mejoras nos recomendas? {{ turnoDetalle.encuesta.pregDos }}
+            <b>¿Qué mejoras nos recomendas?</b>
+            {{ turnoDetalle.encuesta.pregDos }}
           </h5>
           <h5>
-            ¿Volverías a visitar nuestra Clínica?
+            <b>¿Volverías a visitar nuestra Clínica?</b>
             {{ turnoDetalle.encuesta.pregTres }}
           </h5>
         </div>

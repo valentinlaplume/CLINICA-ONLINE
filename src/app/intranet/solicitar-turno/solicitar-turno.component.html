@@ -60,10 +60,14 @@
             <td *ngFor="let fecha of turnosDisponibles">
               <button
                 class="btn btn-dark mb-2"
+                style="width: 150px"
                 (click)="mostrarHorarios(fecha)"
               >
-                {{ fecha.row_date.day }}/{{ fecha.row_date.month }}/{{
+                <!-- {{ fecha.row_date.day }}/{{ fecha.row_date.month }}/{{
                   fecha.row_date.year
+                }} -->
+                {{ fecha.row_date.year }}-{{ fecha.row_date.month }}-{{
+                  fecha.row_date.day
                 }}
               </button>
             </td>
