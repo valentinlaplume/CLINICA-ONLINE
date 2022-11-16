@@ -11,6 +11,7 @@ import { RegisterPacienteComponent } from './register/components/register-pacien
 import { TablaEspecialidadesComponent } from './register/components/tabla-especialidades/tabla-especialidades.component';
 import { VerifyEmailComponent } from './register/components/verify-email/verify-email.component';
 import { RegisterEspecialidadComponent } from './register/components/register-especialidad/register-especialidad.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [

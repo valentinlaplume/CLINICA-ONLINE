@@ -77,5 +77,10 @@
       "
       [especialistaHorarios]="this.authService.usuarioLogeado"
     ></app-mis-horarios>
+    <app-historia-clinica
+      *ngIf="authService.ITEM_ACCESOS.isPaciente"
+    ></app-historia-clinica>
+    <!-- <app-pdf-especialista *ngIf="authService.ITEM_ACCESOS.isEspecialista &&
+        authService.usuarioLogeado.cuentaHabilitada"></app-pdf-especialista> -->
   </div>
 </body>

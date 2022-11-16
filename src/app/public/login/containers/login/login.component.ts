@@ -3,10 +3,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ROLES_ENUM } from 'src/app/enumerators/roles.enum';
 import { AuthService } from 'src/app/services/auth.service';
+import { trigger, transition, animate, style } from '@angular/animations';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('deAbajoHaciaArriba', [
+      transition(':enter', [
+        style({ transform: 'translateY(100%)' }),
+        animate('700ms ease-in', style({ transform: 'translateY(0%)' })),
+      ]),
+      transition(':leave', [
+        animate('700ms ease-in', style({ transform: 'translateY(0%)' })),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   public formulario: FormGroup;

@@ -124,10 +124,10 @@ export class TurnoService {
     const tutorialsRef = this.firestore.collection(this.dbPath);
     console.log(historia);
 
-    tutorialsRef
+    return tutorialsRef
       .doc(turnoId)
       .update({ historiaClinica: Object.assign({}, historia) });
-    this.cargarCollection();
+    //this.cargarCollection();
   }
 
   getTurnosByEspecialidad(especialidad: string) {

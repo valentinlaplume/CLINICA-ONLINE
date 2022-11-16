@@ -21,6 +21,8 @@ import { FilterPacientePipe } from './pipes/filter-paciente.pipe';
 import { MisTurnosEspecialistaComponent } from './components/mis-turnos-especialista/mis-turnos-especialista.component';
 import { RegistrarCalificacionAtencionComponent } from './components/registrar-calificacion-atencion/registrar-calificacion-atencion.component';
 import { EncuestaDetalleComponent } from './components/encuesta-detalle/encuesta-detalle.component';
+import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
+import { HistoriaClinicaAltaComponent } from './components/historia-clinica-alta/historia-clinica-alta.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { EncuestaDetalleComponent } from './components/encuesta-detalle/encuesta
     MisTurnosEspecialistaComponent,
     RegistrarCalificacionAtencionComponent,
     EncuestaDetalleComponent,
+    HistoriaClinicaComponent,
+    HistoriaClinicaAltaComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +70,8 @@ import { EncuestaDetalleComponent } from './components/encuesta-detalle/encuesta
     PacienteListaComponent,
     MisTurnosTablaComponent,
     EncuestaDetalleComponent,
+    HistoriaClinicaComponent,
+    HistoriaClinicaAltaComponent,
 
     NotImageDirective,
 

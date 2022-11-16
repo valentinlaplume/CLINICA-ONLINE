@@ -1,3 +1,4 @@
+
 body{
     background-color: rgb(242, 242, 242);
     height: 150em;
@@ -9,7 +10,9 @@ body{
 }
 
 .container{
+    max-width: 100%;
     padding: 20px;
+    box-shadow: 1px 1px 5px gray;
 }
 
 .tr-data:hover{

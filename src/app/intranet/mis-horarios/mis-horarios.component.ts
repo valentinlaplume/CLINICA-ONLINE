@@ -47,7 +47,7 @@ export class MisHorariosComponent implements OnInit {
   horariosUsuario!: any;
   captchaPropio: boolean = false;
   successOperation: boolean = false;
-  spinner: boolean = false;
+  spinner: boolean;
 
   constructor(
     public fv: FormBuilder,
