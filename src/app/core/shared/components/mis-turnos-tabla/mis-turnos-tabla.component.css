@@ -8,7 +8,7 @@ body{
     }
 }
 
-.container{
+.containter-general{
     padding: 20px;
 }
 
@@ -17,9 +17,12 @@ body{
     background-color: rgb(176, 251, 255);
 }
 
-h3{
-    padding-top: 10px;
-}
+h2{
+    color: rgb(0, 134, 207);
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-align: center;
+  }
 
 
 img{
@@ -33,6 +36,6 @@ img{
 .table-responsive
 {
     position: relative;
-height: 250px!important;
+max-height: 250px!important;
 overflow: auto;
 }

@@ -23,6 +23,8 @@ import { RegistrarCalificacionAtencionComponent } from './components/registrar-c
 import { EncuestaDetalleComponent } from './components/encuesta-detalle/encuesta-detalle.component';
 import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
 import { HistoriaClinicaAltaComponent } from './components/historia-clinica-alta/historia-clinica-alta.component';
+import { HistoriaClinicaDetalleComponent } from './components/historia-clinica-detalle/historia-clinica-detalle.component';
+import { MisPacientesComponent } from './components/mis-pacientes/mis-pacientes.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { HistoriaClinicaAltaComponent } from './components/historia-clinica-alta
     EncuestaDetalleComponent,
     HistoriaClinicaComponent,
     HistoriaClinicaAltaComponent,
+    HistoriaClinicaDetalleComponent,
+    MisPacientesComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +76,8 @@ import { HistoriaClinicaAltaComponent } from './components/historia-clinica-alta
     EncuestaDetalleComponent,
     HistoriaClinicaComponent,
     HistoriaClinicaAltaComponent,
+    HistoriaClinicaDetalleComponent,
+    MisPacientesComponent,
 
     NotImageDirective,
 

@@ -66,4 +66,8 @@ export class NavbarComponent implements OnInit {
   goMisTurnosEspecialista() {
     this.router.navigate(['/intranet/mis-turnos-especialista']);
   }
+
+  goMisPacientes() {
+    this.router.navigate(['/intranet/mis-pacientes']);
+  }
 }

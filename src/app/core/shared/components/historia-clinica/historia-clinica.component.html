@@ -8,7 +8,13 @@
     CLÍNICA LAPLUME
   </h2>
   <hr class="my-4" />
-  <h3>Turnos e Historia Clínica</h3>
+  <h3 class="text-danger">Turnos e Historia Clínica</h3>
+  <div class="row">
+    <h4>Búsqueda por Especialidad o Especialista</h4>
+    <div class="form-group col-md-6">
+      <input class="form-control" [(ngModel)]="filter" ng-blur="ngBlur()" />
+    </div>
+  </div>
   <div class="col-md-12 mx-auto table-responsive mt-3">
     <table class="table table-striped table-bordered fixed">
       <tr class="tr-dark">
@@ -18,7 +24,11 @@
         <th>Reseña</th>
         <th>Historia Clínica</th>
       </tr>
-      <tr *ngFor="let turno of listaHistoriaClinica" appAgranda class="tr-data">
+      <tr
+        *ngFor="let turno of listaHistoriaClinica | filterPaciente: filter"
+        appAgranda
+        class="tr-data"
+      >
         <td>{{ turno.fecha }} - {{ turno.hora }}</td>
         <td>{{ turno.especialidad.descripcion }}</td>
         <td>
@@ -62,6 +72,9 @@
               </tr>
             </table>
           </div>
+          <div class="mx-auto" *ngIf="turno.historiaClinica == ''">
+            NO POSEE
+          </div>
         </td>
       </tr>
     </table>
@@ -70,12 +83,12 @@
 <button
   type="button"
   class="btn btn-danger container"
-  style="margin-top: 10px"
+  style="margin-top: 10px; width: 15%; font-size: 20px"
   appPosicion
   (click)="crearPdf()"
 >
   DESCARGAR<img
     src="../../../../../assets/logo-pdf.png"
-    style="height: 50px; width: 50px; margin-left: 10px"
+    style="height: 40px; width: 40px; margin-left: 10px"
   />
 </button>

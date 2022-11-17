@@ -21,6 +21,7 @@ export class HistoriaClinicaComponent implements OnInit {
   public listadoHistoriaClinica: any = [];
   public listaHistoriaClinica: any = [];
   usuario!: any;
+  public filter!: string;
 
   constructor(
     public historiaClinicaService: HistoriaClinicaService,
@@ -98,7 +99,8 @@ export class HistoriaClinicaComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      var nombreArchivo = 'historia-clinica.pdf';
+      var nombreArchivo =
+        'historia-clinica-' + this.authSvc.usuarioLogeado.dni + '.pdf';
       PDF.save(nombreArchivo);
     });
   }

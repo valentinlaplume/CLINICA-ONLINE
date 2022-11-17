@@ -23,17 +23,17 @@ import { Especialista } from 'src/app/models/especialista';
   selector: 'app-mis-horarios',
   templateUrl: './mis-horarios.component.html',
   styleUrls: ['./mis-horarios.component.css'],
-  // animations: [
-  //   trigger('slideInOut', [
-  //     transition(':enter', [
-  //       style({ transform: 'translateX(-100%)' }),
-  //       animate('2000ms ease-in', style({ transform: 'translateX(0%)' })),
-  //     ]),
-  //     transition(':leave', [
-  //       animate('500ms ease-in', style({ transform: 'translateX(-100%)' })),
-  //     ]),
-  //   ]),
-  // ],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateX(-100%)' }),
+        animate('1200ms ease-in', style({ transform: 'translateX(0%)' })),
+      ]),
+      transition(':leave', [
+        animate('500ms ease-in', style({ transform: 'translateX(-100%)' })),
+      ]),
+    ]),
+  ],
 })
 export class MisHorariosComponent implements OnInit {
   formulario!: FormGroup;

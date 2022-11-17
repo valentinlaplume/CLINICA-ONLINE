@@ -1,11 +1,11 @@
-<div class="container">
-  <div class="row container-turno-detalle">
+<div class="container-turno-detalle mx-auto">
+  <div class="row">
     <div class="col-12">
-      <h3 class="text-center mb-3">Detalle del Turno</h3>
+      <h2 class="text-center mb-3">Detalle del Turno</h2>
       <div class="row">
         <div class="form-group col-md-6">
-          <h4>
-            Paciente: {{ turnoDetalle.paciente.apellido }},
+          <h4 class="nombrePaciente">
+            <b>Paciente:</b> {{ turnoDetalle.paciente.apellido }},
             {{ turnoDetalle.paciente.nombre }}
           </h4>
           <div style="margin: 10px 0px">
@@ -14,15 +14,18 @@
               <img [src]="turnoDetalle.paciente.urlFotos[1]" appNotImage />
             </div>
           </div>
-          <h4>Fecha: {{ turnoDetalle.fecha }}</h4>
-          <h4>Hora: {{ turnoDetalle.hora }}</h4>
+          <hr class="my-4" />
+          <h4><b>Fecha:</b> {{ turnoDetalle.fecha }}</h4>
+          <h4><b>Hora:</b> {{ turnoDetalle.hora }}</h4>
           <h4>
-            Especialista: {{ turnoDetalle.especialista.apellido }},
+            <b>Especialista:</b> {{ turnoDetalle.especialista.apellido }},
             {{ turnoDetalle.especialista.nombre }}
           </h4>
-          <h4>Especialidad: {{ turnoDetalle.especialidad.descripcion }}</h4>
           <h4>
-            Estado:
+            <b>Especialidad:</b> {{ turnoDetalle.especialidad.descripcion }}
+          </h4>
+          <h4>
+            <b>Estado:</b>
             <b
               [ngClass]="
                 turnoDetalle.estado == 'ACEPTADO'
@@ -38,10 +41,11 @@
             </b>
           </h4>
           <h4 *ngIf="turnoDetalle.comentariosEspecialista">
-            Comentario Especialista: {{ turnoDetalle.comentariosEspecialista }}
+            <b>Comentario Especialista</b>:
+            {{ turnoDetalle.comentariosEspecialista }}
           </h4>
           <h4 *ngIf="turnoDetalle.comentariosPaciente">
-            Comentario Paciente: {{ turnoDetalle.comentariosPaciente }}
+            <b>Comentario Paciente</b>: {{ turnoDetalle.comentariosPaciente }}
           </h4>
 
           <div *ngIf="this.authSvc.ITEM_ACCESOS.isEspecialista">
@@ -69,7 +73,8 @@
           <div *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente">
             <div *ngIf="turnoDetalle.estado == 'REALIZADO'" class="form-group">
               <h4>
-                Comentarios Paciente: {{ turnoDetalle.comentariosPaciente }}
+                <b>Comentarios Paciente</b>:
+                {{ turnoDetalle.comentariosPaciente }}
               </h4>
               <textarea
                 *ngIf="this.authSvc.ITEM_ACCESOS.isPaciente"
@@ -187,7 +192,8 @@
         </div>
         <div *ngIf="this.authSvc.ITEM_ACCESOS.isAdmin">
           <h4 *ngIf="turnoDetalle.comentariosAdmin != ''">
-            Comentarios Administrador: {{ turnoDetalle.comentariosAdmin }}
+            <b>Comentarios Administrador</b>:
+            {{ turnoDetalle.comentariosAdmin }}
           </h4>
           <div *ngIf="cancela" class="form-group">
             <div *ngIf="!noMostrarEnviarComentarioAdmin">
@@ -210,14 +216,14 @@
           <app-turno-detalle [turnoDetalle]="turnoDetalle"></app-turno-detalle>
         </div> -->
         <div
-          class="container-encuesta mt-3"
+          class="container-encuesta"
           *ngIf="
             this.authSvc.ITEM_ACCESOS.isAdmin &&
             this.turnoDetalle.encuesta != '' &&
             this.turnoDetalle.encuesta != undefined
           "
         >
-          <h3 class="text-center mt-3">Encuesta Realizada</h3>
+          <h3 class="text-center">Encuesta Realizada</h3>
           <h5>
             <b>¿Qué te parecio la atención?</b>
             {{ turnoDetalle.encuesta.pregUno }}

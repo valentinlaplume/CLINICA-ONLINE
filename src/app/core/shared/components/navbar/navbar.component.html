@@ -117,6 +117,20 @@
 
         <div
           *ngIf="
+            authService.ITEM_ACCESOS.isEspecialista &&
+              authService.ITEM_ACCESOS.cuentaHabilitada &&
+              usuario$ | async as usuario
+          "
+        >
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" (click)="goMisPacientes()"
+              >PACIENTES</a
+            >
+          </li>
+        </div>
+
+        <div
+          *ngIf="
             authService.ITEM_ACCESOS.isPaciente && usuario$ | async as usuario
           "
         >
