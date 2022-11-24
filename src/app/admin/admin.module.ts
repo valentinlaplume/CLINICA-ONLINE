@@ -9,6 +9,7 @@ import { EspecialistaTablaComponent } from './especialista-tabla/especialista-ta
 import { PacienteTablaComponent } from './paciente-tabla/paciente-tabla.component';
 import { RegisterComponent } from './register/containers/register/register.component';
 import { RegisterAdminComponent } from './register/components/register-admin/register-admin.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RegisterAdminComponent } from './register/components/register-admin/reg
     PacienteTablaComponent,
     RegisterComponent,
     RegisterAdminComponent,
+    EstadisticasComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, SharedModule],
 })

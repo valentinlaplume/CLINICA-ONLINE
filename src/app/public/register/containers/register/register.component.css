@@ -1,10 +1,13 @@
 body{
     background-color: rgb(242, 242, 242);
-    height: 50em;
+    height: 70em;
 }
 @media only screen and (max-width: 769px) {
     body{
         height: 50em;
+    }
+    .img-modelos{
+        width: 40%;
     }
 }
 

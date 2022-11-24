@@ -83,6 +83,10 @@
                   >HABILITAR CUENTA DE ESPECIALISTA</a
                 >
               </li>
+              <li>
+                <!-- [routerLink]="['/administracion/habilitar-cuentas']" -->
+                <a class="dropdown-item" (click)="goUsuarios()">VER TODOS</a>
+              </li>
             </ul>
           </li>
         </div>
@@ -212,6 +216,12 @@
               >
                 <a class="dropdown-item" aria-current="page">MIS HORARIOS</a>
               </li> -->
+              <li
+                (click)="onEstadisticas()"
+                *ngIf="authService.ITEM_ACCESOS.isAdmin"
+              >
+                <a class="dropdown-item" aria-current="page">ESTADÍSTICAS</a>
+              </li>
               <li (click)="onMiPerfil()">
                 <a class="dropdown-item" aria-current="page">MI PERFIL</a>
               </li>

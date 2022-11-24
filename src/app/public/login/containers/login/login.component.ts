@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ROLES_ENUM } from 'src/app/enumerators/roles.enum';
 import { AuthService } from 'src/app/services/auth.service';
 import { trigger, transition, animate, style } from '@angular/animations';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public spinner = false;
 
   constructor(
+    public adminService: AdminService,
     public formBuilder: FormBuilder,
     public authService: AuthService,
     public router: Router
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authService.login(item.email, item.password).then((res) => {
         this.spinnerHide();
         if (this.authService.msjError == '') {
+          this.adminService.addLogIngreso(item.email);
           this.router.navigate(['inicio']);
         }
       });

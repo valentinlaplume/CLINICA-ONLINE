@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MisPacientesComponent } from '../core/shared/components/mis-pacientes/mis-pacientes.component';
 import { MisTurnosEspecialistaComponent } from '../core/shared/components/mis-turnos-especialista/mis-turnos-especialista.component';
 import { MisTurnosTablaComponent } from '../core/shared/components/mis-turnos-tabla/mis-turnos-tabla.component';
+import { UsuariosComponent } from '../core/shared/components/usuarios/usuarios.component';
 import { ROLES_ENUM } from '../enumerators/roles.enum';
 import { AutenticacionGuard } from '../guards/autenticacion.guard';
 import { RolesAccesoGuard } from '../guards/roles-acceso.guard';
@@ -56,6 +57,14 @@ const routes: Routes = [
         canActivate: [RolesAccesoGuard],
         data: {
           roles: [ROLES_ENUM.ESPECIALISTA],
+        },
+      },
+      {
+        path: 'usuarios',
+        component: UsuariosComponent,
+        canActivate: [RolesAccesoGuard],
+        data: {
+          roles: [ROLES_ENUM.ADMIN],
         },
       },
     ],

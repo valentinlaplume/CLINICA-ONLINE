@@ -25,13 +25,25 @@ import { HistoriaClinicaComponent } from './components/historia-clinica/historia
 import { HistoriaClinicaAltaComponent } from './components/historia-clinica-alta/historia-clinica-alta.component';
 import { HistoriaClinicaDetalleComponent } from './components/historia-clinica-detalle/historia-clinica-detalle.component';
 import { MisPacientesComponent } from './components/mis-pacientes/mis-pacientes.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { LogIngresosComponent } from './components/log-ingresos/log-ingresos.component';
+import { GraficoCantTurnosPorEspecialidadComponent } from './components/grafico-cant-turnos-por-especialidad/grafico-cant-turnos-por-especialidad.component';
+import { GraficoCantTurnosPorDiaComponent } from './components/grafico-cant-turnos-por-dia/grafico-cant-turnos-por-dia.component';
+import { GraficoCantTurnosEspecialistaComponent } from './components/grafico-cant-turnos-especialista/grafico-cant-turnos-especialista.component';
+import { GraficoCantTurnosEspecialistaFinalizadosComponent } from './components/grafico-cant-turnos-especialista-finalizados/grafico-cant-turnos-especialista-finalizados.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+// import { ChartistModule } from 'ng-chartist';
+import { CaptchaDirective } from './directives/captcha.directive';
+import { ResaltarDirective } from './directives/resaltar.directive';
 
 @NgModule({
   declarations: [
+    NotImageDirective,
+    CaptchaDirective,
+
     NotFoundComponent,
     NavbarComponent,
     CaptchaPropioComponent,
-    NotImageDirective,
     EspecialistaListaComponent,
     EspecialidadListaComponent,
     PacienteListaComponent,
@@ -49,6 +61,13 @@ import { MisPacientesComponent } from './components/mis-pacientes/mis-pacientes.
     HistoriaClinicaAltaComponent,
     HistoriaClinicaDetalleComponent,
     MisPacientesComponent,
+    UsuariosComponent,
+    LogIngresosComponent,
+    GraficoCantTurnosPorEspecialidadComponent,
+    GraficoCantTurnosPorDiaComponent,
+    GraficoCantTurnosEspecialistaComponent,
+    GraficoCantTurnosEspecialistaFinalizadosComponent,
+    ResaltarDirective,
   ],
   imports: [
     CommonModule,
@@ -57,6 +76,8 @@ import { MisPacientesComponent } from './components/mis-pacientes/mis-pacientes.
     FormsModule,
     ReactiveFormsModule,
     AngularFireStorageModule,
+    HighchartsChartModule,
+    // ChartistModule,
   ],
   exports: [
     CommonModule,
@@ -78,8 +99,15 @@ import { MisPacientesComponent } from './components/mis-pacientes/mis-pacientes.
     HistoriaClinicaAltaComponent,
     HistoriaClinicaDetalleComponent,
     MisPacientesComponent,
+    UsuariosComponent,
+    LogIngresosComponent,
+    GraficoCantTurnosPorEspecialidadComponent,
+    GraficoCantTurnosPorDiaComponent,
+    GraficoCantTurnosEspecialistaComponent,
+    GraficoCantTurnosEspecialistaFinalizadosComponent,
 
     NotImageDirective,
+    CaptchaDirective,
 
     FilterTurnosPipe,
     FilterEspecialistaPipe,

@@ -76,7 +76,7 @@ export class HistoriaClinicaAltaComponent implements OnInit {
       .updateTurnoHistoriaClinica(historia, this.turno.id)
       .then((res) => {
         this.formulario.reset();
-        location.reload();
+        this.route.navigate(['/intranet/mis-pacientes']);
       });
   }
 }

@@ -1,0 +1,53 @@
+<div id="pdfTable" #pdfTable class="scale-up-hor-left">
+  <!-- <div id="chart-line">
+    <highcharts-chart
+      [Highcharts]="highcharts"
+      [options]="chartOptions"
+      style="width: 100%; height: 400px; display: block"
+    >
+    </highcharts-chart>
+  </div> -->
+  <hr />
+  <h2>
+    <img
+      class="mt-2"
+      src="../../../../../assets/icono.png"
+      style="height: 50px; width: 50px; margin-right: 10px"
+    />
+    CLÍNICA LAPLUME
+  </h2>
+  <div class="mx-auto" style="align-items: center; text-align: center">
+    <h3 style="text-align: center">Cantidad de turnos por Especialidad</h3>
+  </div>
+  <div style="padding: 10px">
+    <div id="chart4" style="height: 50vh; font-size: 20px"></div>
+  </div>
+  <div
+    class="mx-auto"
+    appResaltar
+    class="shadow-drop-center"
+    style="padding: 10px"
+  >
+    <h5>ESPECIALIDADES:</h5>
+    <ol>
+      <li *ngFor="let item of this.datosProyectados">
+        <b> {{ item.label }}: </b>
+        {{ item.data }}
+      </li>
+    </ol>
+  </div>
+</div>
+<hr />
+
+<button
+  type="button"
+  class="btn btn-danger container"
+  style="margin-top: 10px; width: 15%; font-size: 20px"
+  appPosicion
+  (click)="crearPdf()"
+>
+  DESCARGAR<img
+    src="../../../../../assets/logo-pdf.png"
+    style="height: 40px; width: 40px; margin-left: 10px"
+  />
+</button>

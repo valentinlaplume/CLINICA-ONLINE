@@ -1,0 +1,87 @@
+<body>
+  <div class="container-general mx-auto">
+    <div class="mx-auto">
+      <h2>USUARIOS</h2>
+      <div class="mb-1">
+        <button
+          type="button"
+          class="btn btn-success container"
+          style="margin-top: 10px; width: 15%; font-size: 20px"
+          appPosicion
+          (click)="exportExcelAll()"
+        >
+          DESCARGAR<img
+            src="../../../../../assets/logo-excel.png"
+            style="height: 40px; width: 40px; margin-left: 10px"
+          />
+        </button>
+      </div>
+      <div class="col-md-12 mx-auto table-responsive">
+        <table class="table mx-auto">
+          <thead>
+            <tr>
+              <th *ngFor="let item of pacientes; index as i">
+                <!-- {{ item.apellido }}<br />
+                  {{ item.nombre }} -->
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pacientes; index as i">
+              <td class="mx-auto" style="text-align: center">
+                <div
+                  class="card mb-3 card-paciente"
+                  style="max-width: 70%"
+                  (click)="exportExcel(item)"
+                >
+                  <div class="row g-0">
+                    <div class="col-md-3">
+                      <img
+                        [src]="item.urlFotos[0]"
+                        appNotImage
+                        class="img-fluid rounded-start"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="col-md-8 mx-auto">
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          {{ item.apellido }}, {{ item.nombre }}
+                        </h4>
+                        <div class="card-text" style="width: 100%">
+                          <ul class="list-group list-group-flush">
+                            <!-- <div *ngFor="let turno of item.turnos; index as i">
+                              <li
+                                class="list-group-item text-list-turno"
+                                *ngIf="turno != ''"
+                              >
+                                {{ turno.fecha }} - {{ turno.hora }} -
+                                <b>{{ turno.especialidad.descripcion }}</b>
+                              </li>
+                            </div> -->
+                            <li class="list-group-item text-list-turno">
+                              <b>CORREO: </b> {{ item.email }}
+                            </li>
+                            <li class="list-group-item text-list-turno">
+                              <b>DNI: </b> {{ item.dni }}
+                            </li>
+                            <li class="list-group-item text-list-turno">
+                              <b>OBRA SOCIAL: </b> {{ item.obraSocial }}
+                            </li>
+                            <li class="list-group-item text-list-turno">
+                              <b>EDAD: </b> {{ item.edad }}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

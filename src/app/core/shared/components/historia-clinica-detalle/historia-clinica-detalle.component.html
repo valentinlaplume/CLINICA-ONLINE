@@ -7,6 +7,13 @@
       <h2 class="text-center mb-3">Historia Clínica</h2>
       <div class="row">
         <div class="form-group col-md-6">
+          <h3
+            style="color: rgb(10, 110, 68); text-transform: uppercase"
+            class="text-center"
+          >
+            {{ turnoDetalle.paciente.apellido }},
+            {{ turnoDetalle.paciente.nombre }}
+          </h3>
           <h3 style="color: rgb(15, 10, 110)" class="subtitulo">Datos Fijos</h3>
           <h3><b>Altura: </b> {{ turnoDetalle.historiaClinica.altura }}</h3>
           <h3><b>Peso en KG: </b> {{ turnoDetalle.historiaClinica.peso }}</h3>
@@ -41,7 +48,7 @@
           </h3>
           <h3 *ngIf="turnoDetalle.historiaClinica.clave6 != ''">
             <b>{{ turnoDetalle.historiaClinica.clave6 }}: </b
-            >{{ turnoDetalle.historiaClinica.valor6 }}
+            >{{ turnoDetalle.historiaClinica.valor6 == true ? "SI" : "NO" }}
           </h3>
           <!-- 
         {{ turnoDetalle.historiaClinica.valor1 }}

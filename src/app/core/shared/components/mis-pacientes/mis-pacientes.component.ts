@@ -32,7 +32,10 @@ export class MisPacientesComponent implements OnInit {
       if (this.turnos != null && this.authSvc.usuarioLogeado) {
         this.turnosEspecialista = this.turnos.filter(
           (item: any) =>
-            item.especialista.email == this.authSvc.usuarioLogeado.email
+            item.especialista.email == this.authSvc.usuarioLogeado.email &&
+            item.estado != 'RECHAZADO' &&
+            item.estado != 'CANCELADO' &&
+            item.estado != 'PENDIENTE'
         );
       }
 

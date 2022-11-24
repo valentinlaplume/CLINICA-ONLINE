@@ -54,7 +54,7 @@ img{
 }
 .card-paciente:hover{
   cursor: pointer;
-  box-shadow: 3px 3px 5px rgb(104, 212, 255);
+  box-shadow: 3px 3px 5px rgb(142, 223, 255);
 }
 
 

@@ -1,0 +1,32 @@
+<div id="pdfTable" #pdfTable class="rotate-scale-up">
+  <hr />
+  <h2>
+    <img
+      class="mt-2"
+      src="../../../../../assets/icono.png"
+      style="height: 50px; width: 50px; margin-right: 10px"
+    />
+    CLÍNICA LAPLUME
+  </h2>
+  <div id="chart-line">
+    <highcharts-chart
+      [Highcharts]="highcharts"
+      [options]="chartOptions"
+      style="width: 100%; height: 400px; display: block"
+    >
+    </highcharts-chart>
+  </div>
+  <hr />
+</div>
+<button
+  type="button"
+  class="btn btn-danger container"
+  style="margin-top: 10px; width: 15%; font-size: 20px"
+  appPosicion
+  (click)="crearPdf()"
+>
+  DESCARGAR<img
+    src="../../../../../assets/logo-pdf.png"
+    style="height: 40px; width: 40px; margin-left: 10px"
+  />
+</button>

@@ -13,6 +13,7 @@ import { Admin } from '../models/admin';
 })
 export class AdminService {
   private dbPath: string = 'administradores';
+  private dbPathLogs: string = 'logIngresosClinica';
   public admin$!: Observable<Admin[]>;
   public collectionAdministradores!: AngularFirestoreCollection<Admin>;
   public administradores!: Observable<any[]>;
@@ -42,6 +43,22 @@ export class AdminService {
   // public get(uid: string) {
   //   return this.firestore.collection(this.dbPath).doc(uid).snapshotChanges();
   // }
+
+  async addLogIngreso(email: string) {
+    var fecha = new Date();
+    let item = {
+      email: email,
+      fecha: fecha.toLocaleDateString(),
+      hora: fecha.toLocaleTimeString(),
+    };
+    // this.firestore.collection(this.dbPathLogs).add({
+    //   email: email,
+    //   fecha: fecha.toLocaleDateString(),
+    //   hora: fecha.toLocaleTimeString(),
+    // });
+
+    return await this.firestore.collection(this.dbPathLogs).add(item);
+  }
 
   private async create(item: any) {
     console.log('create collectionAdministradores ->', item);
@@ -126,5 +143,11 @@ export class AdminService {
       );
     // console.log(this.collectionEspecialistas);
     // console.log(this.especialistas);
+  }
+
+  getCollection(collection: string) {
+    return this.firestore
+      .collection<any>(collection)
+      .valueChanges({ idField: 'id' });
   }
 }

@@ -55,6 +55,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/administracion/turnos']);
   }
 
+  onEstadisticas() {
+    this.router.navigate(['/administracion/estadisticas']);
+  }
+
   onMisHorarios() {
     this.router.navigate(['/intranet/mis-horarios']);
   }
@@ -69,5 +73,9 @@ export class NavbarComponent implements OnInit {
 
   goMisPacientes() {
     this.router.navigate(['/intranet/mis-pacientes']);
+  }
+
+  goUsuarios() {
+    this.router.navigate(['/intranet/usuarios']);
   }
 }

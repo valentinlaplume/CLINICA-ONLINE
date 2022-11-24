@@ -68,7 +68,9 @@
                 <td>{{ turno.historiaClinica.valor3 }}</td>
                 <td>{{ turno.historiaClinica.valor4 }}</td>
                 <td>{{ turno.historiaClinica.valor5 }}</td>
-                <td>{{ turno.historiaClinica.valor6 }}</td>
+                <td>
+                  {{ turno.historiaClinica.valor6 == true ? "SI" : "NO" }}
+                </td>
               </tr>
             </table>
           </div>
