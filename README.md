@@ -1,5 +1,4 @@
 # Clinica Online 
-
 Este es un sistema de gestión integral para una clínica online, que proporciona servicios tanto para el personal de la clínica (administradores y médicos) como para los pacientes externos. El sistema permite a los médicos modificar sus días disponibles y turnos, acceder a su bandeja de pacientes y ver el historial médico de cada paciente registrado. Los pacientes, a su vez, pueden ingresar al sistema para ver su historial médico, consultar sus turnos, solicitar nuevos turnos y acceder a información relevante para su atención médica. Además, el sistema cuenta con herramientas de estadísticas y reportes para analizar y visualizar datos importantes de la clínica.
 
 ## Características Principales
