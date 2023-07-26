@@ -1,32 +1,27 @@
-<h1 align="center"> Clinica Online 
-</h1>
+# Clinica Online 
 
-<h3 align="center"> Objetivo
-</h3>
-<p>
-Debemos realizar un sistema según las necesidades y deseos del cliente, para eso tenemos una breve
-descripción de lo que el cliente nos comenta acerca de su negocio.
-“La clínica OnLine, especialista en salud, cuenta actualmente con consultorios (6 en la actualidad),
-dos laboratorios (físicos en la clínica), y una sala de espera general. Está abierta al público de lunes a
-viernes en el horario de 8:00 a 19:00, y los sábados en el horario de 8:00 a 14:00.
+Este es un sistema de gestión integral para una clínica online, que proporciona servicios tanto para el personal de la clínica (administradores y médicos) como para los pacientes externos. El sistema permite a los médicos modificar sus días disponibles y turnos, acceder a su bandeja de pacientes y ver el historial médico de cada paciente registrado. Los pacientes, a su vez, pueden ingresar al sistema para ver su historial médico, consultar sus turnos, solicitar nuevos turnos y acceder a información relevante para su atención médica. Además, el sistema cuenta con herramientas de estadísticas y reportes para analizar y visualizar datos importantes de la clínica.
 
-Trabajan en ella profesionales de diversas especialidades, que ocupan los consultorios acorde a su
-disponibilidad, y reciben en ellos pacientes con turno para consulta o tratamiento. Dichos turnos son
-pedidos por la web seleccionando el profesional o la especialidad. La duración mínima de un turno es
-30 minutos.” pero los profesionales pueden cambiar la duración según su especialidad. Estos
-profesionales pueden tener más de una especialidad.
-También contamos con un sector dentro de la clínica que se encarga de la organización y
-administración de la misma.
-</p>
+## Características Principales
+**Para el Personal de la Clínica:**
+- Gestión de Turnos: Los médicos pueden modificar sus días y horarios disponibles, así como ver su lista de turnos asignados
+- Bandeja de Pacientes: Los médicos tienen acceso a una bandeja de pacientes donde pueden ver la lista de pacientes asignados para atender.
+- Historial Médico: Los médicos pueden acceder al historial médico completo de cada paciente registrado, lo que les permite tener un registro detallado de su atención médica.
+- Reportes y Estadísticas: El sistema ofrece herramientas para generar reportes y estadísticas relevantes para la gestión de la clínica y la atención médica.
 
-## :hammer:Funcionalidades del proyecto
+**Para los Pacientes:**
+- Acceso a Historial Médico: Los pacientes pueden ingresar al sistema para ver su historial médico completo y tener un registro de sus consultas y tratamientos.
+- Gestión de Turnos: Los pacientes pueden solicitar nuevos turnos, consultar los turnos próximos y cancelar turnos si es necesario.
+- Información de la Clínica: Los pacientes pueden acceder a información importante sobre la clínica, como ubicación, horarios de atención y servicios ofrecidos.
 
-- `Funcionalidad 1`: Tener la posibilidad de registrarse, ingresar al sistema y administrar los
-usuarios que van a poder utilizar nuestra plataforma.
-- `Funcionalidad 2`: Carga y visualización de turnos.
-- `Funcionalidad 3`: Historia clínica para cada paciente, donde
-guardemos todas las atenciones y controles que se le hizo al paciente.
-- `Funcionalidad 4`: gráficos y estadísticas para los usuarios Administrador de
-nuestro sistema.
+**Para los Administradores:**
+- Registro de Pacientes: Los administradores tienen la capacidad de dar de alta a nuevos pacientes en el sistema, ingresando la información personal y de contacto del paciente.
+- Registro de Médicos: Los administradores pueden dar de alta a nuevos médicos, ingresando sus datos personales, especialidad y horarios disponibles.
+- Acceso a estadisticas y control general del sistema.
+
+## Tecnologías Utilizadas
+- Angular: El frontend del sistema ha sido desarrollado utilizando el framework Angular para crear una experiencia de usuario interactiva y dinámica.
+- Bootstrap: Se ha utilizado Bootstrap para estilizar el frontend y garantizar un diseño responsive y atractivo en diferentes dispositivos y tamaños de pantalla.
+- Firebase: La base de datos y el sistema de autenticación del sistema se gestionan a través de Firebase, lo que facilita el almacenamiento de datos y la autenticación de usuarios.
 
 
