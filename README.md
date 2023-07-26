@@ -29,9 +29,4 @@ guardemos todas las atenciones y controles que se le hizo al paciente.
 - `Funcionalidad 4`: gráficos y estadísticas para los usuarios Administrador de
 nuestro sistema.
 
-\## 📁 Funcionamiento del proyecto
 
-
-## Autor
-| <img src="[https://avatars.githubusercontent.com/u/37356058?v=4](https://https://avatars.githubusercontent.com/u/78327319?v=4)" width=115><br><sub>Valentin Laplume</sub>
-| :---: |
